@@ -32,7 +32,16 @@ namespace FixesAndTweaks
                         {
                             Assignable assignable = equipment.GetAssignable(Db.Get().AssignableSlots.Suit);
                             if (assignable != null)
+                            {
+                                // First check if the mask/suit is empty and do not unequip it if it's not.
+                                // It is possible for dupes to search for a place to recover breath,
+                                // run through a mask/suit checkpoint while doing so and then start
+                                // recovering breath, which would unassign the functional mask/suit.
+                                SuitTank suitTank = assignable.GetComponent<SuitTank>();
+                                if( suitTank != null && !suitTank.IsEmpty())
+                                    return;
                                 assignable.Unassign();
+                            }
                         }
                     }
                 }
