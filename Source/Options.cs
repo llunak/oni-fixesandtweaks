@@ -32,12 +32,17 @@ namespace FixesAndTweaks
         [JsonProperty]
         public bool BlockHasFarmsDiagnostic { get; set; } = true;
 
+        [Option("Check Enough Food Diagnostic Includes Rockets", "Check also food available in rockets for 'Check enough food' diagnostic.")]
+        [JsonProperty]
+        public bool CheckEnoughFoodDiagnosticIncludesRockets { get; set; } = true;
+
         public override string ToString()
         {
             return string.Format("DeliveryTemperatureLimit.Options[fasterhorizontalscrolling={0},reducedstarvationwarning={1},"
-                + "reducedradiationdiagnostic={2},planteddiagnosticonlyiffarms={3}, blockhasfarmsdiagnostic={4}]",
+                + "reducedradiationdiagnostic={2},planteddiagnosticonlyiffarms={3}, blockhasfarmsdiagnostic={4},"
+                + "checkenoughfooddiagnosticincludesrockets={5}]",
                 FasterHorizontalScrolling, ReducedStarvationWarning, ReducedRadiationDiagnostic,
-                PlantedDiagnosticOnlyIfFarms, BlockHasFarmsDiagnostic);
+                PlantedDiagnosticOnlyIfFarms, BlockHasFarmsDiagnostic, CheckEnoughFoodDiagnosticIncludesRockets);
         }
 
         public void OnOptionsChanged()
