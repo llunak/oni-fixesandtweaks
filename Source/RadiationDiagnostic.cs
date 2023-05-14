@@ -61,7 +61,6 @@ namespace FixesAndTweaks
                     codes.Insert( i + 7, CodeInstruction.Call( typeof( RadiationDiagnostic_Patch ), nameof( CheckExposure_Hook )));
                     codes.Insert( i + 8, codes[ i + 4 ].Clone()); // if false
                     found2 = true;
-                    break;
                 }
             }
             if(!found1 || !found2)
