@@ -7,6 +7,9 @@ using System.Reflection.Emit;
 // high radiation triggers the warning even if the received radiation will be small and thus safe.
 // Trigger the diagnostic only if the dupe has already accumualated some radiation, similarly
 // to the 'Check sick' diagnostic.
+// Additionally, the game code uses LT (less-than) instead of GTE for checking minor exposure,
+// so fix this.
+// (https://forums.kleientertainment.com/klei-bug-tracker/oni/check-exposed-radiation-diagnostic-has-inverted-condition-r40487/)
 namespace FixesAndTweaks
 {
     [HarmonyPatch(typeof(RadiationDiagnostic))]
@@ -17,7 +20,8 @@ namespace FixesAndTweaks
         public static IEnumerable<CodeInstruction> CheckExposure(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
-            bool found = false;
+            bool found1 = false;
+            bool found2 = false;
             int radiationExposureLoad = -1;
             for( int i = 0; i < codes.Count; ++i )
             {
@@ -30,6 +34,15 @@ namespace FixesAndTweaks
                     && codes[ i + 3 ].operand.ToString() == "Boolean Invoke(Instance, Single)" )
                 {
                     radiationExposureLoad = i;
+                }
+                // The function has code:
+                // if (RadiationMonitor.COMPARE_LT_MINOR(sMI, p)...)
+                // Change to:
+                // if (RadiationMonitor.COMPARE_GTE_MINOR(sMI, p)...)
+                if( codes[ i ].opcode == OpCodes.Ldsfld && codes[ i ].operand.ToString().EndsWith( " COMPARE_LT_MINOR" ))
+                {
+                    codes[ i ] = CodeInstruction.LoadField( typeof( RadiationMonitor ), "COMPARE_GTE_MINOR" );
+                    found1 = true;
                 }
                 // The function has code:
                 // if (RadiationMonitor.COMPARE_GTE_DEADLY(sMI, p))
@@ -47,11 +60,11 @@ namespace FixesAndTweaks
                     codes.Insert( i + 6, codes[ radiationExposureLoad + 2 ].Clone()); // load 'p2'
                     codes.Insert( i + 7, CodeInstruction.Call( typeof( RadiationDiagnostic_Patch ), nameof( CheckExposure_Hook )));
                     codes.Insert( i + 8, codes[ i + 4 ].Clone()); // if false
-                    found = true;
+                    found2 = true;
                     break;
                 }
             }
-            if(!found)
+            if(!found1 || !found2)
                 Debug.LogWarning("FixesAndTweaks: Failed to patch RadiationDiagnostic.CheckExposure()");
             return codes;
         }
