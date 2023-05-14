@@ -13,6 +13,10 @@ namespace FixesAndTweaks
         [JsonProperty]
         public bool FasterHorizontalScrolling { get; set; } = true;
 
+        [Option("Faster Vertical Scrolling", "Makes vertical scrolling in views such as the 'Consumables' one faster.")]
+        [JsonProperty]
+        public bool FasterVerticalScrolling { get; set; } = true;
+
         [Option("Reduced Starvation Warning", "If a duplicant is visiting a toilet or catching breath before eating"
             +" and still has at least 800 kcal, the 'Starvation' warning is not shown.")]
         [JsonProperty]
@@ -38,10 +42,11 @@ namespace FixesAndTweaks
 
         public override string ToString()
         {
-            return string.Format("DeliveryTemperatureLimit.Options[fasterhorizontalscrolling={0},reducedstarvationwarning={1},"
-                + "reducedradiationdiagnostic={2},planteddiagnosticonlyiffarms={3}, blockhasfarmsdiagnostic={4},"
-                + "checkenoughfooddiagnosticincludesrockets={5}]",
-                FasterHorizontalScrolling, ReducedStarvationWarning, ReducedRadiationDiagnostic,
+            return string.Format("DeliveryTemperatureLimit.Options[fasterhorizontalscrolling={0},"
+                + "fasterverticalscrolling={1},reducedstarvationwarning={2},"
+                + "reducedradiationdiagnostic={3},planteddiagnosticonlyiffarms={4}, blockhasfarmsdiagnostic={5},"
+                + "checkenoughfooddiagnosticincludesrockets={6}]",
+                FasterHorizontalScrolling, FasterVerticalScrolling, ReducedStarvationWarning, ReducedRadiationDiagnostic,
                 PlantedDiagnosticOnlyIfFarms, BlockHasFarmsDiagnostic, CheckEnoughFoodDiagnosticIncludesRockets);
         }
 
