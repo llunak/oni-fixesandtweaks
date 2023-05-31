@@ -42,7 +42,7 @@ namespace FixesAndTweaks
 
         public override string ToString()
         {
-            return string.Format("DeliveryTemperatureLimit.Options[fasterhorizontalscrolling={0},"
+            return string.Format("FixesAndTweaks.Options[fasterhorizontalscrolling={0},"
                 + "fasterverticalscrolling={1},reducedstarvationwarning={2},"
                 + "reducedradiationdiagnostic={3},planteddiagnosticonlyiffarms={4}, blockhasfarmsdiagnostic={5},"
                 + "checkenoughfooddiagnosticincludesrockets={6}]",
