@@ -36,6 +36,10 @@ namespace FixesAndTweaks
         [JsonProperty]
         public bool BlockHasFarmsDiagnostic { get; set; } = true;
 
+        [Option("Block Power Use Change Diagnostic", "Disable 'Check power use change' diagnostic.")]
+        [JsonProperty]
+        public bool BlockPowerChangeDiagnostic { get; set; } = true;
+
         [Option("Check Enough Food Diagnostic Includes Rockets", "Check also food available in rockets for 'Check enough food' diagnostic.")]
         [JsonProperty]
         public bool CheckEnoughFoodDiagnosticIncludesRockets { get; set; } = true;
@@ -45,9 +49,10 @@ namespace FixesAndTweaks
             return string.Format("FixesAndTweaks.Options[fasterhorizontalscrolling={0},"
                 + "fasterverticalscrolling={1},reducedstarvationwarning={2},"
                 + "reducedradiationdiagnostic={3},planteddiagnosticonlyiffarms={4}, blockhasfarmsdiagnostic={5},"
-                + "checkenoughfooddiagnosticincludesrockets={6}]",
+                + "blockpowerchangediagnostic={6}, checkenoughfooddiagnosticincludesrockets={7}]",
                 FasterHorizontalScrolling, FasterVerticalScrolling, ReducedStarvationWarning, ReducedRadiationDiagnostic,
-                PlantedDiagnosticOnlyIfFarms, BlockHasFarmsDiagnostic, CheckEnoughFoodDiagnosticIncludesRockets);
+                PlantedDiagnosticOnlyIfFarms, BlockHasFarmsDiagnostic, BlockPowerChangeDiagnostic,
+                CheckEnoughFoodDiagnosticIncludesRockets);
         }
 
         public void OnOptionsChanged()
