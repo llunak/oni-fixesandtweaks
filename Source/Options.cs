@@ -44,15 +44,26 @@ namespace FixesAndTweaks
         [JsonProperty]
         public bool CheckEnoughFoodDiagnosticIncludesRockets { get; set; } = true;
 
+        [Option("Check Enough Food Diagnostic Concern Cycles", "Make food diagnostic show a (yellow) concern warning if food left is less than this many cycles.")]
+        [JsonProperty]
+        public float CheckEnoughFoodDiagnosticConcernCycles { get; set; } = 3; // vanilla value
+
+        [Option("Check Enough Food Diagnostic Warning Cycles", "Make food diagnostic show a warning if food left is less than this many cycles.")]
+        [JsonProperty]
+        public float CheckEnoughFoodDiagnosticWarningCycles { get; set; } = 1;
+
+
         public override string ToString()
         {
             return string.Format("FixesAndTweaks.Options[fasterhorizontalscrolling={0},"
                 + "fasterverticalscrolling={1},reducedstarvationwarning={2},"
                 + "reducedradiationdiagnostic={3},planteddiagnosticonlyiffarms={4}, blockhasfarmsdiagnostic={5},"
-                + "blockpowerchangediagnostic={6}, checkenoughfooddiagnosticincludesrockets={7}]",
+                + "blockpowerchangediagnostic={6}, checkenoughfooddiagnosticincludesrockets={7},"
+                + "checkenoughfooddiagnosticconcerncycles={8}, checkenoughfooddiagnosticwarningcycles={9}]",
                 FasterHorizontalScrolling, FasterVerticalScrolling, ReducedStarvationWarning, ReducedRadiationDiagnostic,
                 PlantedDiagnosticOnlyIfFarms, BlockHasFarmsDiagnostic, BlockPowerChangeDiagnostic,
-                CheckEnoughFoodDiagnosticIncludesRockets);
+                CheckEnoughFoodDiagnosticIncludesRockets, CheckEnoughFoodDiagnosticConcernCycles,
+                CheckEnoughFoodDiagnosticWarningCycles);
         }
 
         public void OnOptionsChanged()
