@@ -17,6 +17,10 @@ namespace FixesAndTweaks
         [JsonProperty]
         public bool FasterVerticalScrolling { get; set; } = true;
 
+        [Option("Holding Ctrl Blocks Hover Text", "Hover text such as the info cards or tooltips are not shown while the Ctrl key is pressed.")]
+        [JsonProperty]
+        public bool HoldingCtrlBlocksHoverText { get; set; } = true;
+
         [Option("Reduced Starvation Warning", "If a duplicant is visiting a toilet or catching breath before eating"
             +" and still has at least 800 kcal, the 'Starvation' warning is not shown.")]
         [JsonProperty]
@@ -52,15 +56,15 @@ namespace FixesAndTweaks
         [JsonProperty]
         public float CheckEnoughFoodDiagnosticWarningCycles { get; set; } = 1;
 
-
         public override string ToString()
         {
             return string.Format("FixesAndTweaks.Options[fasterhorizontalscrolling={0},"
-                + "fasterverticalscrolling={1},reducedstarvationwarning={2},"
-                + "reducedradiationdiagnostic={3},planteddiagnosticonlyiffarms={4}, blockhasfarmsdiagnostic={5},"
-                + "blockpowerchangediagnostic={6}, checkenoughfooddiagnosticincludesrockets={7},"
-                + "checkenoughfooddiagnosticconcerncycles={8}, checkenoughfooddiagnosticwarningcycles={9}]",
-                FasterHorizontalScrolling, FasterVerticalScrolling, ReducedStarvationWarning, ReducedRadiationDiagnostic,
+                + "fasterverticalscrolling={1},holdingctrlblockshovertext={2}, reducedstarvationwarning={3},"
+                + "reducedradiationdiagnostic={4},planteddiagnosticonlyiffarms={5}, blockhasfarmsdiagnostic={6},"
+                + "blockpowerchangediagnostic={7}, checkenoughfooddiagnosticincludesrockets={8},"
+                + "checkenoughfooddiagnosticconcerncycles={9}, checkenoughfooddiagnosticwarningcycles={10}]",
+                FasterHorizontalScrolling, FasterVerticalScrolling, HoldingCtrlBlocksHoverText,
+                ReducedStarvationWarning, ReducedRadiationDiagnostic,
                 PlantedDiagnosticOnlyIfFarms, BlockHasFarmsDiagnostic, BlockPowerChangeDiagnostic,
                 CheckEnoughFoodDiagnosticIncludesRockets, CheckEnoughFoodDiagnosticConcernCycles,
                 CheckEnoughFoodDiagnosticWarningCycles);
