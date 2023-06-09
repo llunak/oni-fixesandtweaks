@@ -56,18 +56,23 @@ namespace FixesAndTweaks
         [JsonProperty]
         public float CheckEnoughFoodDiagnosticWarningCycles { get; set; } = 1;
 
+        [Option("Time Sensors Strict Zero Interval", "Time Sensor and Cycle Sensor do not send signal for zero interval.")]
+        [JsonProperty]
+        public bool TimeSensorsStrictZeroInterval { get; set; } = true;
+
         public override string ToString()
         {
             return string.Format("FixesAndTweaks.Options[fasterhorizontalscrolling={0},"
                 + "fasterverticalscrolling={1},holdingctrlblockshovertext={2}, reducedstarvationwarning={3},"
                 + "reducedradiationdiagnostic={4},planteddiagnosticonlyiffarms={5}, blockhasfarmsdiagnostic={6},"
                 + "blockpowerchangediagnostic={7}, checkenoughfooddiagnosticincludesrockets={8},"
-                + "checkenoughfooddiagnosticconcerncycles={9}, checkenoughfooddiagnosticwarningcycles={10}]",
+                + "checkenoughfooddiagnosticconcerncycles={9}, checkenoughfooddiagnosticwarningcycles={10},"
+                + "timesensorsstrictzerointerval={11}]",
                 FasterHorizontalScrolling, FasterVerticalScrolling, HoldingCtrlBlocksHoverText,
                 ReducedStarvationWarning, ReducedRadiationDiagnostic,
                 PlantedDiagnosticOnlyIfFarms, BlockHasFarmsDiagnostic, BlockPowerChangeDiagnostic,
                 CheckEnoughFoodDiagnosticIncludesRockets, CheckEnoughFoodDiagnosticConcernCycles,
-                CheckEnoughFoodDiagnosticWarningCycles);
+                CheckEnoughFoodDiagnosticWarningCycles, TimeSensorsStrictZeroInterval);
         }
 
         public void OnOptionsChanged()
