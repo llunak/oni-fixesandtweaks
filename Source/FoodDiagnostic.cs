@@ -30,6 +30,7 @@ namespace FixesAndTweaks
             // Check again, this time include rockets, count per-dupe need properly, and add two configurable thresholds.
             __result = new ColonyDiagnostic.DiagnosticResult(
                 ColonyDiagnostic.DiagnosticResult.Opinion.Normal, UI.COLONY_DIAGNOSTICS.GENERIC_CRITERIA_PASS);
+            WorldContainer thisWorld = ClusterManager.Instance.GetWorld(__instance.worldID);
             List<MinionIdentity> worldItems = new List<MinionIdentity>();
             float totalAverageValue = 0;
             float totalCurrentValue = 0;
@@ -37,7 +38,8 @@ namespace FixesAndTweaks
             {
                 if( worldContainer.id == __instance.worldID
                     || ( Options.Instance.CheckEnoughFoodDiagnosticIncludesRockets
-                        && worldContainer.ParentWorldId == __instance.worldID ))
+                        && ( worldContainer.ParentWorldId == __instance.worldID
+                            || thisWorld.ParentWorldId == worldContainer.id )))
                 {
                     worldItems.AddRange( Components.LiveMinionIdentities.GetWorldItems(worldContainer.id));
                     Tracker tracker = TrackerTool.Instance.GetWorldTracker<KCalTracker>(worldContainer.id);
