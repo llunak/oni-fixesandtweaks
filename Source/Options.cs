@@ -26,6 +26,19 @@ namespace FixesAndTweaks
         [JsonProperty]
         public bool ReducedStarvationWarning { get; set; } = true;
 
+        [Option("Block Attribute Increase Notification", "Disables the 'Attribute increase' notifications.")]
+        [JsonProperty]
+        public bool BlockAttributeIncreaseNotification { get; set; } = true;
+
+        [Option("Block Cycle Report Ready Notification", "Disables the 'Cycle X report ready' notifications.")]
+        [JsonProperty]
+        public bool BlockCycleReportReadyNotification { get; set; } = true;
+
+        [Option("Block Schedule Notifications", "Disables schedule notifications such as 'Default schedule: BathTime!."
+            + "Only applies to text notifications, sound is not affected.")]
+        [JsonProperty]
+        public bool BlockScheduleNotification { get; set; } = true;
+
         [Option("Reduced Radiation Diagnostic", "If a duplicant is exposed to strong radiation but has not yet received"
             + "a significant amount of radiation, the 'Check exposed' diagnostic is suppressed.")]
         [JsonProperty]
@@ -64,13 +77,17 @@ namespace FixesAndTweaks
         {
             return string.Format("FixesAndTweaks.Options[fasterhorizontalscrolling={0},"
                 + "fasterverticalscrolling={1},holdingctrlblockshovertext={2}, reducedstarvationwarning={3},"
-                + "reducedradiationdiagnostic={4},planteddiagnosticonlyiffarms={5}, blockhasfarmsdiagnostic={6},"
-                + "blockpowerchangediagnostic={7}, checkenoughfooddiagnosticincludesrockets={8},"
-                + "checkenoughfooddiagnosticconcerncycles={9}, checkenoughfooddiagnosticwarningcycles={10},"
-                + "timesensorsstrictzerointerval={11}]",
+                + "blockattributeincreasenotification={4}, blockcyclereportreadynotification={5},"
+                + "blockschedulenotification={6}, reducedradiationdiagnostic={7},"
+                + "planteddiagnosticonlyiffarms={8}, blockhasfarmsdiagnostic={9},"
+                + "blockpowerchangediagnostic={10}, checkenoughfooddiagnosticincludesrockets={11},"
+                + "checkenoughfooddiagnosticconcerncycles={12}, checkenoughfooddiagnosticwarningcycles={13},"
+                + "timesensorsstrictzerointerval={14}]",
                 FasterHorizontalScrolling, FasterVerticalScrolling, HoldingCtrlBlocksHoverText,
-                ReducedStarvationWarning, ReducedRadiationDiagnostic,
-                PlantedDiagnosticOnlyIfFarms, BlockHasFarmsDiagnostic, BlockPowerChangeDiagnostic,
+                ReducedStarvationWarning, BlockAttributeIncreaseNotification,
+                BlockCycleReportReadyNotification, BlockScheduleNotification,
+                ReducedRadiationDiagnostic, PlantedDiagnosticOnlyIfFarms,
+                BlockHasFarmsDiagnostic, BlockPowerChangeDiagnostic,
                 CheckEnoughFoodDiagnosticIncludesRockets, CheckEnoughFoodDiagnosticConcernCycles,
                 CheckEnoughFoodDiagnosticWarningCycles, TimeSensorsStrictZeroInterval);
         }
