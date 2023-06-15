@@ -11,6 +11,13 @@ namespace FixesAndTweaks
     [HarmonyPatch(typeof(BreathabilityTracker))]
     public class BreathabilityTracker_Patch
     {
+        [HarmonyPrepare]
+        public static bool Prepare()
+        {
+            // It's been fixed for u47-561558.
+            return KleiVersion.ChangeList < 561558u;
+        }
+
         [HarmonyTranspiler]
         [HarmonyPatch(nameof(UpdateData))]
         public static IEnumerable<CodeInstruction> UpdateData(IEnumerable<CodeInstruction> instructions)
