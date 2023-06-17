@@ -3,7 +3,7 @@
     <OutputPath>..\</OutputPath>
     <TargetFramework>net471</TargetFramework>
     <AssemblyTitle>Fixes and Tweaks</AssemblyTitle>
-    <AssemblyVersion>2023.0616.1</AssemblyVersion>
+    <AssemblyVersion>2023.0617.1</AssemblyVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
