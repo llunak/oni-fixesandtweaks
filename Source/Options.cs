@@ -75,21 +75,21 @@ namespace FixesAndTweaks
 
         public override string ToString()
         {
-            return string.Format("FixesAndTweaks.Options[fasterhorizontalscrolling={0},"
-                + "fasterverticalscrolling={1},holdingctrlblockshovertext={2}, reducedstarvationwarning={3},"
-                + "blockattributeincreasenotification={4}, blockcyclereportreadynotification={5},"
-                + "blockschedulenotification={6}, reducedradiationdiagnostic={7},"
-                + "planteddiagnosticonlyiffarms={8}, blockhasfarmsdiagnostic={9},"
-                + "blockpowerchangediagnostic={10}, checkenoughfooddiagnosticincludesrockets={11},"
-                + "checkenoughfooddiagnosticconcerncycles={12}, checkenoughfooddiagnosticwarningcycles={13},"
-                + "timesensorsstrictzerointerval={14}]",
-                FasterHorizontalScrolling, FasterVerticalScrolling, HoldingCtrlBlocksHoverText,
-                ReducedStarvationWarning, BlockAttributeIncreaseNotification,
-                BlockCycleReportReadyNotification, BlockScheduleNotification,
-                ReducedRadiationDiagnostic, PlantedDiagnosticOnlyIfFarms,
-                BlockHasFarmsDiagnostic, BlockPowerChangeDiagnostic,
-                CheckEnoughFoodDiagnosticIncludesRockets, CheckEnoughFoodDiagnosticConcernCycles,
-                CheckEnoughFoodDiagnosticWarningCycles, TimeSensorsStrictZeroInterval);
+            return $"FixesAndTweaks.Options[fasterhorizontalscrolling={FasterHorizontalScrolling},"
+                + $"fasterverticalscrolling={FasterVerticalScrolling},"
+                + $"holdingctrlblockshovertext={HoldingCtrlBlocksHoverText},"
+                + $"reducedstarvationwarning={ReducedStarvationWarning},"
+                + $"blockattributeincreasenotification={BlockAttributeIncreaseNotification},"
+                + $"blockcyclereportreadynotification={BlockCycleReportReadyNotification},"
+                + $"blockschedulenotification={BlockScheduleNotification},"
+                + $"reducedradiationdiagnostic={ReducedRadiationDiagnostic},"
+                + $"planteddiagnosticonlyiffarms={PlantedDiagnosticOnlyIfFarms},"
+                + $"blockhasfarmsdiagnostic={BlockHasFarmsDiagnostic},"
+                + $"blockpowerchangediagnostic={BlockPowerChangeDiagnostic},"
+                + $"checkenoughfooddiagnosticincludesrockets={CheckEnoughFoodDiagnosticIncludesRockets},"
+                + $"checkenoughfooddiagnosticconcerncycles={CheckEnoughFoodDiagnosticConcernCycles},"
+                + $"checkenoughfooddiagnosticwarningcycles={CheckEnoughFoodDiagnosticWarningCycles},"
+                + $"timesensorsstrictzerointerval={TimeSensorsStrictZeroInterval}]";
         }
 
         public void OnOptionsChanged()
