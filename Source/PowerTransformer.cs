@@ -48,7 +48,7 @@ namespace FixesAndTweaks
             if( transformer == null )
                 return true;
             if( transformer.IsProducingPower())
-                return false;
+                return true;
             return false; // do not show the no-wire status, transformer is disabled
         }
     }
