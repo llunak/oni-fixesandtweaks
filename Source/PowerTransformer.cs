@@ -7,6 +7,40 @@ using System.Collections.Generic;
 // A disabled Power Transformer shows a red 'No Wire' status, even if it is actually connected and only disabled.
 namespace FixesAndTweaks
 {
+    // Track RequireInputs -> PowerTransfomer mapping to avoid GetComponent<> calls.
+    [HarmonyPatch(typeof(PowerTransformer))]
+    public static class PowerTransformer_Patch
+    {
+        public static Dictionary< RequireInputs, PowerTransformer > transformers
+            = new Dictionary< RequireInputs, PowerTransformer >();
+
+        public static PowerTransformer Get( RequireInputs inputs )
+        {
+            if( transformers.TryGetValue( inputs, out PowerTransformer transformer ))
+                return transformer;
+            return null;
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(nameof(OnSpawn))]
+        public static void OnSpawn(PowerTransformer __instance)
+        {
+            transformers[ __instance.GetComponent< RequireInputs >() ] = __instance;
+        }
+    }
+
+    // PowerTransformer inherits OnCleanUp(), so patch that one.
+    [HarmonyPatch(typeof(Generator))]
+    public static class Generator_Patch
+    {
+        [HarmonyPrefix]
+        [HarmonyPatch(nameof(OnCleanUp))]
+        public static void OnCleanUp(Generator __instance)
+        {
+            PowerTransformer_Patch.transformers.Remove( __instance.GetComponent< RequireInputs >());
+        }
+    }
+
     [HarmonyPatch(typeof(RequireInputs))]
     public class RequireInputs_Patch
     {
@@ -44,7 +78,7 @@ namespace FixesAndTweaks
 
         public static bool CheckRequirements_Hook( RequireInputs instance )
         {
-            PowerTransformer transformer = instance.GetComponent< PowerTransformer >();
+            PowerTransformer transformer = PowerTransformer_Patch.Get( instance );
             if( transformer == null )
                 return true;
             if( transformer.IsProducingPower())
