@@ -37,7 +37,9 @@ namespace FixesAndTweaks
         [HarmonyPatch(nameof(OnCleanUp))]
         public static void OnCleanUp(Generator __instance)
         {
-            PowerTransformer_Patch.transformers.Remove( __instance.GetComponent< RequireInputs >());
+            RequireInputs inputs = __instance.GetComponent< RequireInputs >();
+            if( inputs != null )
+                PowerTransformer_Patch.transformers.Remove( inputs );
         }
     }
 
