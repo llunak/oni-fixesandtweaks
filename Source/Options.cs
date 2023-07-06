@@ -53,6 +53,14 @@ namespace FixesAndTweaks
         [RequireDLC(DlcManager.EXPANSION1_ID)]
         public bool ReducedRadiationDiagnostic { get; set; } = true;
 
+        [Option("Radiation Diagnostic Dose Threshold",
+            "The minimal radiation dose received for the 'Check exposed' diagnostic to trigger.\n"
+            + "The value of 0 leaves the game default threshold, which is half of the dose"
+            + " at which minor radiation sickness starts.")]
+        [JsonProperty]
+        [RequireDLC(DlcManager.EXPANSION1_ID)]
+        public int RadiationDiagnosticDoseThreshold { get; set; } = 0;
+
         [Option("Planted Diagnostic Only If Farms",
             "'Check farms are planted' diagnostic triggers only if there are farm plots.")]
         [JsonProperty]
@@ -98,6 +106,7 @@ namespace FixesAndTweaks
                 + $"blockcyclereportreadynotification={BlockCycleReportReadyNotification},"
                 + $"blockschedulenotification={BlockScheduleNotification},"
                 + $"reducedradiationdiagnostic={ReducedRadiationDiagnostic},"
+                + $"radiationdiagnosticdosethreshold={RadiationDiagnosticDoseThreshold},"
                 + $"planteddiagnosticonlyiffarms={PlantedDiagnosticOnlyIfFarms},"
                 + $"blockhasfarmsdiagnostic={BlockHasFarmsDiagnostic},"
                 + $"blockpowerchangediagnostic={BlockPowerChangeDiagnostic},"
