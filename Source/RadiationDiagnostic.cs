@@ -47,11 +47,11 @@ namespace FixesAndTweaks
                     minionLoad = i + 2;
                 }
                 // The function has code:
-                // float p2 = sm.radiationExposure.Get(sMI);
+                // float p = sm.currentExposurePerCycle.Get(sMI);
                 // Change to:
-                // float p2 = CheckExposure_Hook1(sm.radiationExposure.Get(sMI), item);
+                // float p = CheckExposure_Hook1(sm.currentExposurePerCycle.Get(sMI), item);
                 if( codes[ i ].opcode == OpCodes.Ldfld
-                    && codes[ i ].operand.ToString().EndsWith( " radiationExposure" )
+                    && codes[ i ].operand.ToString().EndsWith( " currentExposurePerCycle" )
                     && minionLoad != -1 && i + 3 < codes.Count
                     && codes[ i + 1 ].IsLdloc()
                     && codes[ i + 1 ].operand.ToString().StartsWith( "RadiationMonitor+Instance " )
