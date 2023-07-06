@@ -41,7 +41,7 @@ namespace FixesAndTweaks
         public bool BlockCycleReportReadyNotification { get; set; } = true;
 
         [Option("Block Schedule Notifications",
-            "Disables schedule notifications such as 'Default schedule: BathTime!."
+            "Disables schedule notifications such as 'Default schedule: BathTime!'.\n"
             + "Only applies to text notifications, sound is not affected.")]
         [JsonProperty]
         public bool BlockScheduleNotification { get; set; } = true;
