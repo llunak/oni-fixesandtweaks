@@ -10,7 +10,9 @@ namespace FixesAndTweaks
     [HarmonyPatch(typeof(LogicTimeOfDaySensor))]
     public class LogicTimeOfDaySensor_Patch
     {
-        private static MethodInfo setState = AccessTools.Method( typeof( LogicTimeOfDaySensor ), "SetState" );
+        delegate void SetStateDelegate(LogicTimeOfDaySensor sensor, bool on);
+        private static SetStateDelegate setState = AccessTools.MethodDelegate<SetStateDelegate>(
+            AccessTools.Method( typeof( LogicTimeOfDaySensor ), "SetState" ));
 
         [HarmonyPrefix]
         [HarmonyPatch(nameof(Sim200ms))]
@@ -20,12 +22,12 @@ namespace FixesAndTweaks
                 return true;
             if( ___duration == 0f )
             {
-                setState.Invoke( __instance, new object[]{ false } );
+                setState( __instance, false );
                 return false;
             }
             if( ___duration == 1f )
             {
-                setState.Invoke( __instance, new object[]{ true } );
+                setState( __instance, true );
                 return false;
             }
             return true;
@@ -35,7 +37,9 @@ namespace FixesAndTweaks
     [HarmonyPatch(typeof(LogicTimerSensor))]
     public class LogicTimerSensor_Patch
     {
-        private static MethodInfo setState = AccessTools.Method( typeof( LogicTimerSensor ), "SetState" );
+        delegate void SetStateDelegate(LogicTimerSensor sensor, bool on);
+        private static SetStateDelegate setState = AccessTools.MethodDelegate<SetStateDelegate>(
+            AccessTools.Method( typeof( LogicTimerSensor ), "SetState" ));
 
         [HarmonyPrefix]
         [HarmonyPatch(nameof(Sim33ms))]
@@ -45,12 +49,12 @@ namespace FixesAndTweaks
                 return true;
             if( ___onDuration == 0f )
             {
-                setState.Invoke( __instance, new object[]{ false } );
+                setState( __instance, false );
                 return false;
             }
             if( ___offDuration == 0f )
             {
-                setState.Invoke( __instance, new object[]{ true } );
+                setState( __instance, true );
                 return false;
             }
             return true;
