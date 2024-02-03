@@ -5,7 +5,7 @@ using HarmonyLib;
 namespace FixesAndTweaks
 {
     [HarmonyPatch(typeof(KScrollRect))]
-    public class KScreenRect_Patch
+    public class KScrollRect_Patch
     {
         [HarmonyPostfix]
         [HarmonyPatch(MethodType.Constructor)]
