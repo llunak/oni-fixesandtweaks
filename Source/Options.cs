@@ -46,6 +46,11 @@ namespace FixesAndTweaks
         [JsonProperty]
         public bool BlockScheduleNotification { get; set; } = true;
 
+        [Option("Block Critter Starvation Notification Expiration",
+            "The 'Critter Starvation' notification will be shown as long at it applies.")]
+        [JsonProperty]
+        public bool BlockCritterStarvationNotificationExpiration { get; set; } = true;
+
         [Option("Reduced Radiation Diagnostic",
             "If a duplicant is exposed to strong radiation but has not yet received"
             + "a significant amount of radiation, the 'Check exposed' diagnostic is suppressed.")]
@@ -105,6 +110,7 @@ namespace FixesAndTweaks
                 + $"blockattributeincreasenotification={BlockAttributeIncreaseNotification},"
                 + $"blockcyclereportreadynotification={BlockCycleReportReadyNotification},"
                 + $"blockschedulenotification={BlockScheduleNotification},"
+                + $"blockcritterstarvationnotificationexpiration={BlockCritterStarvationNotificationExpiration},"
                 + $"reducedradiationdiagnostic={ReducedRadiationDiagnostic},"
                 + $"radiationdiagnosticdosethreshold={RadiationDiagnosticDoseThreshold},"
                 + $"planteddiagnosticonlyiffarms={PlantedDiagnosticOnlyIfFarms},"
