@@ -15,6 +15,13 @@ namespace FixesAndTweaks
     [HarmonyPatch(typeof(MovePickupableChore))]
     public class MovePickupableChore_Patch
     {
+        [HarmonyPrepare]
+        public static bool Prepare()
+        {
+            // It's been fixed for u51-596100u.
+            return KleiVersion.ChangeList < 596100u;
+        }
+
         [HarmonyTranspiler]
         [HarmonyPatch(MethodType.Constructor)]
         [HarmonyPatch(new Type[] { typeof(IStateMachineTarget), typeof(GameObject), typeof(Action<Chore>) })]
