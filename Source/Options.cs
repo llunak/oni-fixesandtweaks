@@ -24,6 +24,16 @@ namespace FixesAndTweaks
         [JsonProperty]
         public bool HoldingCtrlBlocksHoverText { get; set; } = true;
 
+        [Option("Automated Notifier Does Not Expire",
+            "Notifications from the Automated Notifier do not expire, but they can be dismissed.")]
+        [JsonProperty]
+        public bool AutomatedNotifierDoesNotExpire { get; set; } = true;
+
+        [Option("Automated Notifier Red Signal Clears",
+            "When Automated Notifier's automation input signal changes to red signal, the notification is immediately cleared.")]
+        [JsonProperty]
+        public bool AutomatedNotifierRedSignalClears { get; set; } = true;
+
         [Option("Reduced Starvation Warning",
             "If a duplicant is visiting a toilet or catching breath before eating"
             +" and still has at least 800 kcal, the 'Starvation' warning is not shown.")]
@@ -106,6 +116,8 @@ namespace FixesAndTweaks
             return $"FixesAndTweaks.Options[fasterhorizontalscrolling={FasterHorizontalScrolling},"
                 + $"fasterverticalscrolling={FasterVerticalScrolling},"
                 + $"holdingctrlblockshovertext={HoldingCtrlBlocksHoverText},"
+                + $"automatednotifierdoesnotexpire={AutomatedNotifierDoesNotExpire},"
+                + $"automatednotifierredsignalclears={AutomatedNotifierRedSignalClears},"
                 + $"reducedstarvationwarning={ReducedStarvationWarning},"
                 + $"blockattributeincreasenotification={BlockAttributeIncreaseNotification},"
                 + $"blockcyclereportreadynotification={BlockCycleReportReadyNotification},"
