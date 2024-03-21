@@ -27,7 +27,7 @@ namespace FixesAndTweaks
             AmountInstance calories = Db.Get().Amounts.Calories.Lookup(__instance.gameObject);
             if( calories.value / calories.GetMax() < 0.20f )
                 return; // Less than 800 kcal, do not adjust anything.
-            // Chores that may come before eating and be ignored.
+            // Chores that may come before eating and can be ignored.
             Func< Chore, bool > isAllowedChore = ( Chore chore ) =>
             {
                 return chore.choreType.urge == Db.Get().Urges.Pee
