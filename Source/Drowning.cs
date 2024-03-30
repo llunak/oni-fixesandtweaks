@@ -37,7 +37,7 @@ namespace FixesAndTweaks
             if( cavity.numCells > 50 )
                 return false;
             for( int x = cavity.minX; x <= cavity.maxX; ++x )
-                for( int y = cavity.minY; x <= cavity.maxY; ++x )
+                for( int y = cavity.minY; y <= cavity.maxY; ++y )
                 {
                     int xyCell = Grid.XYToCell( x, y );
                     if( !Grid.IsSubstantialLiquid( Grid.XYToCell( x, y )))
