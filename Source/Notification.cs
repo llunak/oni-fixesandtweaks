@@ -1,6 +1,7 @@
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
 
@@ -65,6 +66,32 @@ namespace FixesAndTweaks
             // 'wasOn' at this point means 'is on'
             if( !___wasOn && ___notification != null )
                 ___notification.Clear();
+        }
+
+        private static FieldInfo notificationField
+            = AccessTools.Field( typeof( LogicAlarm ), "notification" );
+
+        public static void DoOnCleanUp( LogicAlarm logicAlarm )
+        {
+            // Clear the notification when the building is destroyed.
+            Notification notification = (Notification) notificationField.GetValue( logicAlarm );
+            if( notification != null )
+                notification.Clear();
+        }
+    }
+
+    // LogicAlarm has no OnCleanUp to patch, so it must be done in the base class.
+    [HarmonyPatch(typeof(KMonoBehaviour))]
+    public class KMonoBehaviour_Patch
+    {
+        [HarmonyPrefix]
+        [HarmonyPatch(nameof(OnCleanUp))]
+        public static void OnCleanUp( KMonoBehaviour __instance )
+        {
+            if( __instance is LogicAlarm logicAlarm )
+            {
+                LogicAlarm_Patch.DoOnCleanUp( logicAlarm );
+            }
         }
     }
 }
