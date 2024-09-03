@@ -19,6 +19,8 @@ namespace FixesAndTweaks
              ref List<int> ___worldsToScreenshot)
         {
             int cycle = GameClock.Instance.GetCycle();
+            if( cycle == 0 ) // Game start (called during dupe selection).
+                return;
             foreach (WorldContainer worldContainer in ClusterManager.Instance.WorldContainers)
             {
                 if (!worldContainer.IsDiscovered || worldContainer.IsModuleInterior)
