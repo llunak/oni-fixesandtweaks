@@ -9,6 +9,7 @@ namespace FixesAndTweaks
         public override void OnLoad( Harmony harmony )
         {
             base.OnLoad( harmony );
+            LocString.CreateLocStringKeys( typeof( STRINGS.FIXESANDTWEAKS ));
             PUtil.InitLibrary( false );
             new POptions().RegisterOptions( this, typeof( Options ));
             CreatureCalorieMonitor_Patch.Patch( harmony );

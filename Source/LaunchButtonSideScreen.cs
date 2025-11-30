@@ -28,7 +28,7 @@ namespace FixesAndTweaks
             if( component.GetCrewBoardedFraction().second == 0 )
             {
                 ___launchButton.isInteractable = false;
-                ___statusText.text = TWEAKSANDFIXES.NO_CREW_ASSIGNED;
+                ___statusText.text = FIXESANDTWEAKS.NO_CREW_ASSIGNED;
                 ___launchButton.GetComponentInChildren<LocText>().text
                     = UI.UISIDESCREENS.LAUNCHPADSIDESCREEN.LAUNCH_BUTTON;
                 ___launchButton.GetComponentInChildren<ToolTip>().toolTip
