@@ -61,6 +61,18 @@ namespace FixesAndTweaks
         [JsonProperty]
         public bool BlockCritterStarvationNotificationExpiration { get; set; } = true;
 
+#if false
+        [Option("Show Notification for Seeds of Known Mutations",
+            "Show a notification when a mutated seed is found even if the mutation is already known.")]
+        [JsonProperty]
+        public bool ShowNotificationForSeedsOfKnownMutations { get; set; } = true;
+
+        [Option("Mutated Seed Notification Does Not Expire",
+            "Notifications about new mutated seeds do not expire, but they can be dismissed.")]
+        [JsonProperty]
+        public bool MutatedSeedNotificationDoesNotExpire { get; set; } = true;
+#endif
+
         [Option("Reduced Radiation Diagnostic",
             "If a duplicant is exposed to strong radiation but has not yet received"
             + "a significant amount of radiation, the 'Check exposed' diagnostic is suppressed.")]
@@ -123,6 +135,10 @@ namespace FixesAndTweaks
                 + $"blockcyclereportreadynotification={BlockCycleReportReadyNotification},"
                 + $"blockschedulenotification={BlockScheduleNotification},"
                 + $"blockcritterstarvationnotificationexpiration={BlockCritterStarvationNotificationExpiration},"
+#if false
+                + $"shownotificationforseedspfknownmutations={ShowNotificationForSeedsOfKnownMutations},"
+                + $"mutatedseednotificationdoesnotexpire={MutatedSeedNotificationDoesNotExpire},"
+#endif
                 + $"reducedradiationdiagnostic={ReducedRadiationDiagnostic},"
                 + $"radiationdiagnosticdosethreshold={RadiationDiagnosticDoseThreshold},"
                 + $"planteddiagnosticonlyiffarms={PlantedDiagnosticOnlyIfFarms},"
