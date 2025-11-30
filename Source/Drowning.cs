@@ -34,7 +34,7 @@ namespace FixesAndTweaks
             CavityInfo cavity = Game.Instance.roomProber.GetCavityForCell( cell );
             if( cavity == null )
                 return false;
-            if( cavity.numCells > 50 )
+            if( cavity.NumCells > 50 )
                 return false;
             for( int x = cavity.minX; x <= cavity.maxX; ++x )
                 for( int y = cavity.minY; y <= cavity.maxY; ++y )
