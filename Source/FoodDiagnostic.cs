@@ -53,7 +53,7 @@ namespace FixesAndTweaks
             float totalCaloriesPerCycle = 0;
             foreach( MinionIdentity minion in worldItems )
             {
-                float caloriesPerSecond = Db.Get().Amounts.Calories.Lookup( minion ).GetDelta();
+                float caloriesPerSecond = Db.Get().Amounts.Calories.Lookup( minion )?.GetDelta() ?? 0;
                 if( caloriesPerSecond != float.PositiveInfinity ) // not lowest hunger difficulty
                     totalCaloriesPerCycle += caloriesPerSecond * Constants.SECONDS_PER_CYCLE * -1;
             }
