@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using System.Reflection;
 
+// https://forums.kleientertainment.com/klei-bug-tracker/oni/copy-settings-between-more-compatible-buildings-r51119/
 // 'Copy Settings' doesn't work between some related buildings, such as ration box and refrigerator.
 namespace FixesAndTweaks;
 
