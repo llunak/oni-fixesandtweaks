@@ -31,8 +31,7 @@ namespace FixesAndTweaks
                     && i + 8 < codes.Count
                     && codes[ i + 7 ].opcode == OpCodes.Ldc_I4_0
                     && codes[ i + 8 ].opcode == OpCodes.Newobj
-                    && codes[ i + 8 ].operand.ToString()
-                        == "Void .ctor(String, NotificationType, Func`3, Object, Boolean, Single, ClickCallback, Object, Transform, Boolean, Boolean, Boolean)" )
+                    && codes[ i + 8 ].operand.ToString().StartsWith("Void .ctor("))
                 {
                     codes[ i ] = new CodeInstruction( OpCodes.Call,
                         typeof( LogicAlarm_Patch ).GetMethod( nameof( CreateNotification_Hook1 ))); // 'expires'
