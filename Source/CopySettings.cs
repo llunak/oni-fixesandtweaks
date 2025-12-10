@@ -28,7 +28,6 @@ public class CopySettingsPatches
         Patch( Type.GetType( "Psyko.Freezer.FreezerConfig, Freezer" ), PatchFoodStorageFreezer, harmony );
 
         Patch( typeof(SolidConduitInboxConfig), PatchStorageLocker, harmony );
-        Patch( typeof(StorageTileConfig), PatchStorageLocker, harmony );
 
         Patch( typeof(BottleEmptierConfig), PatchEmptier, harmony );
         Patch( typeof(BottleEmptierConduitLiquidConfig), PatchEmptier, harmony );
